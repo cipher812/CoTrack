@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorGreen</item>
+        <item name="colorPrimaryDark">@color/colorGreenDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="loginButton">
+        <item name="android:background">@drawable/login_button</item>
+        <item name="android:textColor">#FFFEFE</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

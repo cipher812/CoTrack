@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "923705900486",
+    "firebase_url": "https://covid-19-diary-a306c.firebaseio.com",
+    "project_id": "covid-19-diary-a306c",
+    "storage_bucket": "covid-19-diary-a306c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923705900486:android:d109d41ad7ab52ab37c6c7",
+        "android_client_info": {
+          "package_name": "com.cipher.covid19diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923705900486-qas6jop9814mhql5v8ca0f0vqm682kbl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cipher.covid19diary",
+            "certificate_hash": "7ce4c36f12557948ba3841a3b95bda1d10db654a"
+          }
+        },
+        {
+          "client_id": "923705900486-qniptok2hhjvivmk2tleii4h6vf2rf35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH3SIrwGy7cGIABBO_RMbbUTfdIh74d9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923705900486-qniptok2hhjvivmk2tleii4h6vf2rf35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

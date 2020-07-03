@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".profile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/view_backgorund"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/icons8_cat_profile_240px" />
+
+            <TextView
+                android:id="@+id/xname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="name"
+                android:fontFamily="@font/basic"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="05dp"
+        android:layout_marginTop="-30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/xemail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableStart="@drawable/icons8_email_64px"
+            android:fontFamily="@font/basic"
+            android:gravity="left"
+            android:drawablePadding="10dp"
+            android:paddingStart="10sp"
+            android:text="E-Mail"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xuid"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableStart="@drawable/icons8_identification_documents_60px"
+            android:gravity="left"
+            android:paddingStart="10sp"
+            android:fontFamily="@font/basic"
+            android:drawablePadding="10dp"
+            android:text="UID"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xage"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:fontFamily="@font/basic"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/icons8_age_64px"
+            android:gravity="left"
+            android:paddingStart="10sp"
+            android:text="Age"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xdob"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableStart="@drawable/icons8_calendar_11_52px_1"
+            android:fontFamily="@font/basic"
+            android:drawablePadding="10dp"
+            android:gravity="left"
+            android:paddingStart="10sp"
+            android:text="DoB"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xmed"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableStart="@drawable/icons8_medical_doctor_52px"
+            android:gravity="left"
+            android:drawablePadding="10dp"
+            android:paddingStart="10sp"
+            android:fontFamily="@font/basic"
+            android:text="Medical"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xb"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableStart="@drawable/icons8_rh__48px_1"
+            android:gravity="left"
+            android:paddingStart="10sp"
+            android:text="Blood Group"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/basic"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xadr"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableStart="@drawable/icons8_address_48px"
+            android:gravity="left"
+            android:fontFamily="@font/basic"
+            android:paddingStart="10sp"
+            android:drawablePadding="10dp"
+            android:text="Address"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
