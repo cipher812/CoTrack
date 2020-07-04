@@ -200,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:fontFamily="@font/basic"
                 android:textColor="@color/white"
-                android:text="MADE WITH LOVE FROM US"
+                android:text="MADE WITH LOVE FROM TEAM KRYPTONITE"
                 android:gravity="center"/>
         </LinearLayout>
     </LinearLayout>
