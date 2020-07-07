@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -100,7 +101,6 @@ public class dashboard extends AppCompatActivity
     protected void onStart()
     {
         super.onStart();
-
         readData();
 
         log_out.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +143,16 @@ public class dashboard extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent intent = new Intent(dashboard.this,diary.class);
+                startActivity(intent);
+            }
+        });
+
+        med.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:04712309250"));
                 startActivity(intent);
             }
         });

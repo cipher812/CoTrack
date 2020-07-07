@@ -57,26 +57,29 @@ public class add extends AppCompatActivity
     private void SendData()
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String utime=DateFormat.getTimeInstance().format(new Date());
+        //String utime=DateFormat.getTimeInstance().format(new Date());
 
-        Map<String, Object> time = new HashMap<>();
-        time.put("time "+ utime, dat+" "+tim);
+        Map<String, Object> Array = new HashMap<>();
+        Array.put("time", Arrays.asList(dat+":"+tim));
+        Array.put("location", Arrays.asList(loc.getText().toString()));
+        Array.put("people",  Arrays.asList(ppl.getText().toString()));
+        Array.put("vehicle", Arrays.asList(vnol.getText().toString()));
 
-        Map<String, Object> location = new HashMap<>();
-        location.put("location "+ utime, loc.getText().toString());
+        /*Map<String, Object> location = new HashMap<>();
+        location.put("location"+ utime, loc.getText().toString());
 
         Map<String, Object> people = new HashMap<>();
         people.put("presons "+ utime, ppl.getText().toString());
 
         Map<String, Object> vehicle = new HashMap<>();
-        vehicle.put("vehicle "+ utime, vnol.getText().toString());
+        vehicle.put("vehicle "+ utime, vnol.getText().toString());*/
 
-        db.collection(uid).document("details").collection("time").document("1").set(time)
+        db.collection(uid).document("details").set(Array)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid)
             {
-                //Toast.makeText(add.this,"Entry added",Toast.LENGTH_LONG).show();
+                Toast.makeText(add.this,"Entry added",Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -86,7 +89,7 @@ public class add extends AppCompatActivity
                     }
                 });
 
-        db.collection(uid).document("details").collection("location").document("1").set(location)
+        /*db.collection(uid).document("details").collection("locationx").document("1").update(location)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid)
@@ -101,7 +104,7 @@ public class add extends AppCompatActivity
             }
         });
 
-        db.collection(uid).document("details").collection("people").document("1").set(people)
+        db.collection(uid).document("details").collection("people").document("1").update(people)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid)
@@ -116,7 +119,7 @@ public class add extends AppCompatActivity
             }
         });
 
-        db.collection(uid).document("details").collection("vehicle").document("1").set(vehicle)
+        db.collection(uid).document("details").collection("vehicle").document("1").update(vehicle)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid)
@@ -129,7 +132,7 @@ public class add extends AppCompatActivity
             {
                 Toast.makeText(add.this,"Entry added failed",Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
     }
 

@@ -44,8 +44,8 @@ public class profile extends AppCompatActivity
                                     name.setText(document.getString("name"));
                                     mail.setText(document.getString("email"));
                                     xuid.setText(uid);
-                                    age.setText(document.getDouble("age").toString());
-                                    dob.setText(document.getDate("dob").toString());
+                                    age.setText(document.getString("age"));
+                                    dob.setText(document.getString("dob"));
                                     med.setText(document.getString("mecial_condition"));
                                     xb.setText(document.getString("blood_group"));
                                     adr.setText(document.getString("adress"));

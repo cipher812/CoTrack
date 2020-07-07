@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +32,93 @@ public class sinup extends AppCompatActivity
     String uid;
 
     private FirebaseAuth mAuth;
+
+    private void signup(String uid)
+    {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> user = new HashMap<>();
+        user.put("name", name.getText().toString());
+        user.put("age", age.getText().toString());
+        user.put("adress", address.getText().toString());
+        user.put("email", mail.getText().toString());
+        user.put("blood_group",bg.getText().toString());
+        user.put("id", uid);
+
+        db.collection(uid).document("details").set(new HashMap<Array, Object>())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid)
+                    {
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e)
+            {
+                Toast.makeText(sinup.this,"Entry added failed",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        db.collection(uid).document("personal").set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid)
+                    {
+                        //Toast.makeText(add.this,"Entry added",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(sinup.this,LoginActivity.class);
+                        startActivity(intent);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e)
+            {
+                Toast.makeText(sinup.this,"Entry added failed",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        /*db.collection(uid).document("details").set(new HashMap<Array, Object>())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid)
+                    {
+                        //Toast.makeText(sinup.this,"Entry added",Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e)
+            {
+                Toast.makeText(sinup.this,"Entry added failed",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        db.collection(uid).document("details").set(new HashMap<Array, Object>())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid)
+                    {
+                        //Toast.makeText(sinup.this,"Entry added",Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e)
+            {
+                Toast.makeText(sinup.this,"Entry added failed",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        db.collection(uid)
+                .document("personal")
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid)
+                    {
+                        Toast.makeText(sinup.this, "Success! Kindly sign in.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(sinup.this,LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });*/
+    }
 
     private void auth(String email,String password)
     {
@@ -45,10 +135,8 @@ public class sinup extends AppCompatActivity
                             Log.d("TAG", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             uid=user.getUid();
-
-                            Toast.makeText(sinup.this, "Success! Kindly sign in.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(sinup.this,LoginActivity.class);
-                            startActivity(intent);
+                            signup(user.getUid());
+                            Toast.makeText(sinup.this, "Success! Kindly sign in. Id:"+uid, Toast.LENGTH_SHORT).show();
                         }
                         else
                         {// If sign in fails, display a message to the user.
@@ -56,30 +144,6 @@ public class sinup extends AppCompatActivity
                             Toast.makeText(sinup.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
 
-                    }
-                });
-    }
-
-    private void signup()
-    {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Map<String, Object> user = new HashMap<>();
-        user.put("name", name.getText().toString());
-        user.put("age", age.getText().toString());
-        user.put("adress", address.getText().toString());
-        user.put("email", mail.getText().toString());
-        user.put("blood_group",bg.getText().toString());
-        user.put("id", uid);
-
-        db.collection(uid)
-                .document("personal")
-                .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid)
-                    {
-                        Toast.makeText(sinup.this, "Success! Kindly sign in.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -108,7 +172,6 @@ public class sinup extends AppCompatActivity
             public void onClick(View view)
             {
                 auth(mail.getText().toString(),pass.getText().toString());
-                //signup();
             }
         });
 

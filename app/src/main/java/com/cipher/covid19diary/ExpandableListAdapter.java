@@ -1,96 +1,77 @@
 package com.cipher.covid19diary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
-    private Context context;
-    private List<String> listDataHeader;
-    private HashMap<String,List<String>> listHashMap;
+public class ExpandableListAdapter extends ArrayAdapter<String>
+{
+    private Activity context;
+    private String[] Date;
+    private String[] Location;
+    private String[] People,vehicle;
 
-    public ExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listHashMap) {
-        this.context = context;
-        this.listDataHeader = listDataHeader;
-        this.listHashMap = listHashMap;
-    }
-
-    @Override
-    public int getGroupCount() {
-        return listDataHeader.size();
-    }
-
-    @Override
-    public int getChildrenCount(int i) {
-        return listHashMap.get(listDataHeader.get(i)).size();
-    }
-
-    @Override
-    public Object getGroup(int i) {
-
-        return listDataHeader.get(i);
-    }
-
-    @Override
-    public Object getChild(int i, int i1) {
-        return listHashMap.get(listDataHeader.get(i)).get(i1);//i=grp item i1=child item
-    }
-
-    @Override
-    public long getGroupId(int i)
+    public ExpandableListAdapter(Activity context, String[] Date,String[] Location,String[] People,String[] vehicle)
     {
-        return i;
+        super(context, R.layout.list_item,Date);
+
+        this.context=context;
+        this.Date=Date;
+        this.Location=Location;
+        this.People=People;
+        this.vehicle=vehicle;
     }
 
+    @NonNull
     @Override
-    public long getChildId(int i, int i1) {
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
+    {
+        View r=convertView;
+        ViewHolder viewHolder=null;
 
-        return i1;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public View getGroupView(int i, boolean b, View view, ViewGroup parent) {//check  contextView & view ??
-        String headerTitle =(String)getGroup(i);
-        if (view==null)
+        if(r==null)
         {
-            LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.list_group,null);
+            LayoutInflater inflater=context.getLayoutInflater();
+            r=inflater.inflate(R.layout.list_item,null,true);
+            viewHolder=new ViewHolder(r);
+            r.setTag(viewHolder);
         }
-        TextView lbListHeader = (TextView)view.findViewById(R.id.lbListHeader);
-        lbListHeader.setTypeface(null, Typeface.BOLD);
-        lbListHeader.setText(headerTitle);
-        return view;
-    }
-
-    @Override
-    public View getChildView(int i, int i1, boolean b, View view, ViewGroup parent) {//b=islastchild
-        final String childText = (String)getChild(i,i1);
-
-        if(view == null)
+        else
         {
-            LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.list_item,null);
+            viewHolder=(ViewHolder) r.getTag();
         }
 
-        TextView txtListChild = (TextView)view.findViewById(R.id.lbListItem);
-        txtListChild.setText(childText);
-        return view;
+        viewHolder.tdate.setText(Date[position]);
+        viewHolder.tloc.setText(Location[position]);
+        viewHolder.tveh.setText(People[position]);
+        viewHolder.tppl.setText(vehicle[position]);
+
+        return r;
     }
 
-    @Override
-    public boolean isChildSelectable(int i, int i1) {//i=groupPosition i1=childPosition
-        return true;
+    class ViewHolder
+    {
+        TextView tdate,tloc,tppl,tveh;
+        ViewHolder(View v)
+        {
+            tdate=v.findViewById(R.id.day);
+            tloc=v.findViewById(R.id.location);
+            tppl=v.findViewById(R.id.people);
+            tveh=v.findViewById(R.id.veh);
+        }
     }
 }

@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity
         {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},perm);
         }
+        else if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CALL_PHONE)!=PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CALL_PHONE},perm);
+        }
         else
         {
             Toast.makeText(getApplicationContext(), "All permissions granted", Toast.LENGTH_SHORT).show();
